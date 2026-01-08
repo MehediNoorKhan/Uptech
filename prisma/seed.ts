@@ -106,27 +106,29 @@ async function main() {
     },
   ];
 
-  for (const product of products) {
-    await prisma.product.upsert({
-      where: { slug: product.slug },
-      update: {},
-      create: {
-        name: product.name,
-        slug: product.slug,
-        price: product.price,
-        oldPrice: product.oldPrice,
-        description: product.description,
-        specifications: product.specifications,
-        stock: product.stock,
-        images: product.images || [
-          "https://i.postimg.cc/8Cws08LC/neymar.jpg",
-        ],
-        featured: product.featured,
-        category: { connect: { id: categoryMap[product.categorySlug] } },
-        brand: product.brandSlug, // string as per schema
+for (const product of products) {
+  await prisma.product.upsert({
+    where: { slug: product.slug },
+    update: {},
+    create: {
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      oldPrice: product.oldPrice,
+      description: product.description,
+      specifications: product.specifications,
+      stock: product.stock,
+      images: product.images,
+      featured: product.featured,
+      category: {
+        connect: {
+          id: categoryMap[product.categorySlug],
+        },
       },
-    });
-  }
+      brand: product.brandSlug, // string ✔
+    },
+  });
+}
 
   console.log("Seeding finished!");
 }

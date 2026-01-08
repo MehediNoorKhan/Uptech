@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-      "seed": "npx ts-node prisma/seed.ts",
+    "seed": "npx ts-node prisma/seed.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.27",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
